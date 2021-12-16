@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+</head>
+<body>
+    {% set page_name = 'Log In Page' %} <!-- sets the page name in menu.html -->
+    {% include('menu.html') %} <!-- includes the menu.html -->
+
+    {% if session.username %} <!-- if login then show the logged username -->
+        <h2>Welcome back {{ session.username }}!</h2>
+    {% else %} <!-- else show login form -->
+        <form action="/login" method="POST"> <!-- the action is defined as a route in app.py -->
+        Username: <input name="username" type="text">
+        <br><br>
+        Password: <input name="password" type="password">
+        <br><br>
+        <input type="submit">
+    </form>
+    {% endif %}
+</body>
+</html>

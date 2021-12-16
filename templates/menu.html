@@ -1,0 +1,7 @@
+<header>
+    <a href="/">Home</a> | <a href="/about">About</a> | <a href="/catalog">Catalog</a> | <a href="/catalog_2">Catalog_2</a>
+    {% if session.username %} | <a href="/logout">Log Out</a> {% else %} | <a href="/login">Log In</a> {% endif %}
+</header>
+
+<h1>Welcome to the {{ page_name }} {{ session.username }}</h1>
+<!-- page_name is a parameter, and we will set it by using:  {% set page_name = 'Log In Page' %} -->

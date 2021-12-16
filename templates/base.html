@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title> <!-- title block -->
+    <link rel="stylesheet" href="/static/css/base.css">
+</head>
+<body>
+{% block body %}
+<!--    if there is a content here - it will be removed in the other pages that are based on this (if they define
+        a block body). if there is a super() in these pages block - it won't be overrided -->
+{% endblock %}
+
+<!-- this h3 will appear in all pages because it's not wrapped in block -->
+<h3>this text should appear in all base pages because it's not in a block</h3>
+
+<!-- footer block -->
+{% block footer %}
+
+{% endblock %}
+</body>
+</html>

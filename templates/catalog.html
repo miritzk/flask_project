@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalog</title>
+</head>
+<body>
+    {% set page_name = 'Catalog Page' %} <!-- sets the page name in menu.html -->
+    {% include('menu.html') %} <!-- includes the menu.html -->
+
+    <h2 class="{% if color == 'green' %}green{% else %}yellow{% endif %}">Want to find:</h2> <!-- an example for class as a parameter -->
+    <form action="/catalog" method="GET"> <!-- the action is a route we defined in app.py -->
+        Type: <input name="product_type" type="text">
+        <br><br>
+        Size: <input name="size" type="text">
+        <br><br>
+        <input type="submit">
+    </form>
+
+<!--    if search was made (if we got p_type as parameter) - then show what was searched-->
+    {% if p_type %}
+        <h2>Product from search:</h2>
+        <p> Product: {{ p_type }} <br>
+            Size: {{ p_size }}
+        </p>
+    {% endif %}
+
+</body>
+</html>

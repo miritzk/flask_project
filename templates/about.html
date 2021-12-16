@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+    {% set page_name = 'About Page' %} <!-- sets the page name in menu.html -->
+    {% include('menu.html') %} <!-- includes the menu.html -->
+
+    {% if session.username %} <!-- if user logged in -->
+        <h2>About me...</h2>
+        <h3>University: {{ uni }}</h3>
+
+        <h3>Profile Details:</h3>
+        <ul>
+            {% for key, value in profile.items() %} <!-- for loop - generates <li> for all the items in the "profile" dictionary (a parameter we got in app.py) -->
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Degrees:</h3>
+        <ol>
+            <li>{{ degrees[0] }}</li>
+            <li>{{ degrees[1] }}</li>
+        </ol>
+
+        <h3>Hobbies:</h3>
+            <ol>
+                <li>{{ hobbies[0] }}</li>
+                <li>{{ hobbies[1] }}</li>
+                <li>{{ hobbies[2] }}</li>
+            </ol>
+    {% else %}
+        <h2>You need to log in first!</h2>
+    {% endif %}
+
+</body>
+</html>

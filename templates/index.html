@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    {% set page_name = 'Main Page' %} <!-- sets the page name in menu.html -->
+    {% include('menu.html') %} <!-- includes the menu.html -->
+
+    <!--  the true values in default('new', true) ignores empty values like '' -->
+    {% if name %} <!-- if name exists (if we got it as a parameter from app.py) -->
+        <h2>Hello {{ name | default('New', true) | upper() }} {{ last_name | default('User', true) | upper() }}!</h2> <!-- {{ parameter | filter | filter ... }} -->
+    {% else %}
+        <h2>You need to log in!</h2>
+        <h3>Check out our new <a href="/catalog">catalog</a>.</h3> <!-- the href is a route we defined in app.py -->
+    {% endif %}
+</body>
+</html>
